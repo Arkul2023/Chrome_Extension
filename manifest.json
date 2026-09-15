@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "CloudLead Contact Finder",
+  "version": "1.0",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "https://www.linkedin.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "CloudLead Contact Finder"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.linkedin.com/in/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "sidebar.html",
+        "dist/*",
+        "dist/assets/*",
+        "assets/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
